@@ -31,3 +31,17 @@
 	12. Calculate investment amount
 
 </details>
+
+## Week3
+- Brief JAVA Object Oriented Based Program
+<details>
+	<summary>Tutorial Summary Week 3</summary>
+
+	1. Account Model Object Based Program
+	2. Rectangle Model Object Based Program
+	3. Fan Model Object Based Program
+	4. Use GregorianCalendar Object Based Program
+	5. Time Model Object Based Program 1
+	6. Time Model Object Based Program 2
+
+</details>
