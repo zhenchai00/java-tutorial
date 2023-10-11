@@ -46,6 +46,25 @@
 
 </details>
 
+## Week4
+- Brief JAVA Basic
+<details>
+	<summary>Tutorial Summary Week 4</summary>
+
+	1. Understand Java Basic operation
+
+</details>
+
+## Week5
+- Parking Ticket System
+<details>
+	<summary>Tutorial Summary Week 5</summary>
+
+	1. Initial Setup of Parking Ticket System
+	2. JFrame, JOption, JDialog
+
+</details>
+
 # License
 
 MIT by zhenchai
