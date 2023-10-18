@@ -12,6 +12,11 @@ import javax.swing.JOptionPane;
  */
 public class Page1 implements ActionListener{
 	private JFrame homepage;
+
+	public JFrame getHomepage() {
+		return homepage;
+	}
+
 	private Button register, login, stop;
 	
 	public Page1(){
@@ -27,6 +32,8 @@ public class Page1 implements ActionListener{
 		
 		// create event listenenr
 		stop.addActionListener(this); // "this" means current object
+		register.addActionListener(this);
+		login.addActionListener(this);
 		
 		// set layout of the jframe and add button into it
 		homepage.setLayout(new FlowLayout()); // will let the component to set the width and height 
@@ -51,9 +58,32 @@ public class Page1 implements ActionListener{
 				}
 				DataIO.write();
 				System.exit(0);
-			}else if (e.getSource() == register){
 				
-			}else if (e.getSource() == login){
+			}else if(e.getSource() == register){
+				String inputName = JOptionPane.showInputDialog("Enter username:");
+				if(DataIO.checkUsername(inputName) != null){
+					throw new Exception();
+				}
+				
+				int inputPassword = Integer.parseInt(JOptionPane.showInputDialog("Enter password:"));
+				DataIO.allCustomers.add(new Customer(inputName, inputPassword));
+				DataIO.write();
+				
+			}else if(e.getSource() == login){
+				String inputName = JOptionPane.showInputDialog("Enter username:");
+				Customer found = DataIO.checkUsername(inputName);
+				if(found == null){
+					throw new Exception();
+				}
+				
+				int inputPassword = Integer.parseInt(JOptionPane.showInputDialog("Password:"));
+				if(found.getPassword() != inputPassword){
+					throw new Exception();
+				}
+				
+				ParkingTicketSystem.loginUser = found;
+				homepage.setVisible(false);
+				ParkingTicketSystem.second.getMyPage().setVisible(true);
 				
 			}
 		}catch(Exception x){
