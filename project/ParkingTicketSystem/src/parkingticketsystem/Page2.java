@@ -64,7 +64,25 @@ public class Page2 implements ActionListener{
 				myPage.setVisible(false);
 				ParkingTicketSystem.first.getHomepage().setVisible(true);
 			}else if(e.getSource() == exit){
-
+				int size = ParkingTicketSystem.loginUser.getMyTickets().size();
+				if (size > 0
+						&& ParkingTicketSystem.loginUser.getMyTickets().get(size - 1).getCharge() == 0) {
+					int number = ParkingTicketSystem.loginUser.getMyTickets().get(size - 1).getNumber();
+					int enter = ParkingTicketSystem.loginUser.getMyTickets().get(size - 1).getTime();
+					String input = JOptionPane.showInputDialog("Ticket number is " + number + ".\nEnter time is " + enter + ".\nKey in exit time:");
+					int exit = Integer.parseInt(input);
+					if (exit <= enter || exit > 24) {
+						throw new Exception();
+					}
+					
+					int charge = exit - enter;
+					ParkingTicketSystem.third.setValue(charge);
+					ParkingTicketSystem.third.getLabel().setText("You need to pay RM " + charge + "!");
+					ParkingTicketSystem.third.getPaymentPage().setVisible(true);
+					myPage.setVisible(false);
+				} else {
+					throw new Exception();
+				}
 			}
 			
 		}catch(Exception x){
