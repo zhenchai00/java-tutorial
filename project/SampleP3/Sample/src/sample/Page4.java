@@ -33,10 +33,10 @@ public class Page4 implements ActionListener {
 		this.readFile();
 		
 		// set the value of the tickets details
-		totalTicketLabel = new Label("Total Tickets: " + this.getTotalTicket());
-		totalPaidTicketLabel = new Label("Total Paid Tickets: " + this.getTotalPaidTicket());
-		totalUnPaidTicketLabel = new Label("Total Unpaid Tickets: " + this.getTotalUnPaidTicket());
-		totalPaymentLabel = new Label("Total Payment: RM " + this.getTotalPaymentTicket());
+		totalTicketLabel = new Label("Total Tickets: ");
+		totalPaidTicketLabel = new Label("Total Paid Tickets: ");
+		totalUnPaidTicketLabel = new Label("Total Unpaid Tickets: ");
+		totalPaymentLabel = new Label("Total Payment: RM ");
 		
 		// add label to frame 
 		adminPage.add(totalTicketLabel);
@@ -57,19 +57,20 @@ public class Page4 implements ActionListener {
 	 */
 	public void readFile(){
 		try {
-			Scanner textFile = new Scanner(new File("ticket.txt"));
-			while(textFile.hasNext()){
-                int id = Integer.parseInt(textFile.nextLine());
-                int enter = Integer.parseInt(textFile.nextLine());
-                int charge = Integer.parseInt(textFile.nextLine());
-                String owner = textFile.nextLine();
-				textFile.nextLine();
-				ticketId.add(id);
-				ticketEnter.add(enter);
-				ticketCharge.add(charge);
-				ticketOwner.add(owner);
-            }
-			textFile.close();
+			
+//			Scanner textFile = new Scanner(new File("ticket.txt"));
+//			while(textFile.hasNext()){
+//                int id = Integer.parseInt(textFile.nextLine());
+//                int enter = Integer.parseInt(textFile.nextLine());
+//                int charge = Integer.parseInt(textFile.nextLine());
+//                String owner = textFile.nextLine();
+//				textFile.nextLine();
+//				ticketId.add(id);
+//				ticketEnter.add(enter);
+//				ticketCharge.add(charge);
+//				ticketOwner.add(owner);
+//            }
+//			textFile.close();
 		} catch (Exception e) {
             System.out.println("Error in read ..........\n" + e);
 		}
@@ -79,8 +80,9 @@ public class Page4 implements ActionListener {
 	 * to get total of the ticket value
 	 * @return total ticket
 	 */
-	public int getTotalTicket() {
-		return ticketId.size();
+	public void getTotalTicket() {
+		ArrayList<Ticket> allTicket = DataIO.getAllTickets();
+		System.out.println(allTicket.size());
 	}
 	
 	/**
@@ -88,6 +90,8 @@ public class Page4 implements ActionListener {
 	 * @return total payment of ticket
 	 */
 	public int getTotalPaymentTicket() {
+		ArrayList<Ticket> allTicket = DataIO.getAllTickets();
+		System.out.println(allTicket.size());
 		int totalChargeValue = 0;
 		for (Integer chargeValue: ticketCharge) {
 			System.out.println(chargeValue + " ");
@@ -103,6 +107,8 @@ public class Page4 implements ActionListener {
 	 * @return total paid ticket
 	 */
 	public int getTotalPaidTicket() {
+		ArrayList<Ticket> allTicket = DataIO.getAllTickets();
+			System.out.println(allTicket.size());
 		ArrayList<Integer> totalChargeValue = new ArrayList();
 		for (Integer chargeValue: ticketCharge) {
 			System.out.println(chargeValue + " ");
@@ -118,6 +124,8 @@ public class Page4 implements ActionListener {
 	 * @return total unpaid ticket
 	 */
 	public int getTotalUnPaidTicket() {
+		ArrayList<Ticket> allTicket = DataIO.getAllTickets();
+			System.out.println(allTicket.size());
 		ArrayList<Integer> totalChargeValue = new ArrayList();
 		for (Integer chargeValue: ticketCharge) {
 			System.out.println(chargeValue + " ");

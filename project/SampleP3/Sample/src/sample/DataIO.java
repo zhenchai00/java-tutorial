@@ -61,4 +61,8 @@ public class DataIO {
         }
         return null;
     }
+	
+	public static ArrayList<Ticket> getAllTickets() {
+		return allTickets;
+	}
 }
