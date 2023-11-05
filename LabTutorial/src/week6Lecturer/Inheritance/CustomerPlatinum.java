@@ -1,6 +1,6 @@
-package week6Lecturer.Inheritance;
+package Week6Lecturer.Inheritance;
 
-import week6Lecturer.Encapsulation.Customer;
+import Week6Lecturer.Encapsulation.Customer;
 
 
 public class CustomerPlatinum extends Customer {

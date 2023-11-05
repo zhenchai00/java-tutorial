@@ -1,4 +1,4 @@
-package week6Lecturer.MultipleInheritance;
+package Week6Lecturer.MultipleInheritance;
 
 
 // JAVA Does Not support Multiple Inheritance

@@ -1,4 +1,4 @@
-package week6Lecturer;
+package Week6Lecturer;
 
 import java.util.Scanner;
 

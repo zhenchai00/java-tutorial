@@ -1,4 +1,4 @@
-package week6Lecturer.Encapsulation;
+package Week6Lecturer.Encapsulation;
 
 import java.util.Scanner;
 

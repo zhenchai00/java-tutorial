@@ -1,4 +1,4 @@
-package week6Lecturer.MultipleInheritance;
+package Week6Lecturer.MultipleInheritance;
 
 public class ClassB {
 	public void lunch(){

@@ -1,6 +1,4 @@
-package week6Lecturer.Inheritance;
-
-import week6Lecturer.*;
+package Week6Lecturer.Inheritance;
 
 public class Main {
 	public static void main (String[] args){
@@ -9,7 +7,7 @@ public class Main {
 		x.setDiscount(50);
 		System.out.println(x.toString());
 		
-		Customer y = new Customer("APIIT", 123, 100.00);
-		System.out.println(y.toString());
+//		Customer y = new Customer("APIIT", 123, 100.00);
+//		System.out.println(y.toString());
 	}
 }
