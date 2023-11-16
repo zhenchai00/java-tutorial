@@ -1,4 +1,4 @@
-package foodordersystem.Order;
+package foodordersystem.Model;
 
 import java.io.*;
 

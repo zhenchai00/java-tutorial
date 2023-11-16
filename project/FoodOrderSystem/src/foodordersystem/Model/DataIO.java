@@ -1,11 +1,9 @@
-package foodordersystem;
+package foodordersystem.Model;
 
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import foodordersystem.Order.Order;
 
 public class DataIO {
     public static ArrayList<Order> allOrders = new ArrayList<Order>();
