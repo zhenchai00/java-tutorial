@@ -11,12 +11,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class NewOrderPage implements ActionListener{
-    private JFrame newOrderPage;
+    private static JFrame newOrderPage;
     private JButton addBtn, cancelBtn, cartBtn;
     private JLabel itemIdLabel, quantityLabel;
     private JTextField itemIdField;
     private JFormattedTextField quantityField;
-    public ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
+    public static ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
 
     /**
      * Constructor of NewOrderPage by creating the frame and its content
@@ -68,7 +68,7 @@ public class NewOrderPage implements ActionListener{
         newOrderPage.setVisible(false);
     }
 
-    public JFrame getNewOrderPage() {
+    public static JFrame getNewOrderPage() {
         return newOrderPage;
     }
 
@@ -93,13 +93,13 @@ public class NewOrderPage implements ActionListener{
                 System.out.println("quantity: " + quantityValue);
                 System.out.println("tempOrder: " + tempOrders.size());
                 
-                // DataIO.writeOrder(new Order(itemIdValue, 0, 0, "", "", Order.Type.DELIVERY, Order.Refund.NO, Order.Status.PENDING));
-
             } else if (event.getSource() == cancelBtn) {
                 newOrderPage.setVisible(false);
                 OrderPage.getOrderPage().setVisible(true);
 
             } else if (event.getSource() == cartBtn) {
+                newOrderPage.setVisible(false);
+                OrderCartPage.getOrderCartPage().setVisible(true);
                 System.out.println("Cart button clicked");
 
             }
@@ -109,4 +109,7 @@ public class NewOrderPage implements ActionListener{
         }
     }
 
+    public static ArrayList<TempOrder> getTempOrders() {
+        return tempOrders;
+    }
 }
