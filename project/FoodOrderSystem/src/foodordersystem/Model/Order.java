@@ -34,6 +34,7 @@ public class Order {
 	}
 
 	private int id;
+	private int orderDetailId;
 	private int invoiceId;
 	private int customerId;
 	private String address;
@@ -46,6 +47,7 @@ public class Order {
 	 * Constructor
 	 * @param id
 	 * @param invoiceId
+	 * @param orderDetailId
 	 * @param customerId
 	 * @param address
 	 * @param date
@@ -54,15 +56,17 @@ public class Order {
 	 * @param status 
 	 */
 	public Order(
-			int id,
-			int invoiceId,
-			int customerId,
-			String address,
-			String date,
-			Type type,
-			Refund refund,
-			Status status
+		int id,
+		int orderDetailId,
+		int invoiceId,
+		int customerId,
+		String address,
+		String date,
+		Type type,
+		Refund refund,
+		Status status
 	) {
+		this.orderDetailId = orderDetailId;
 		this.invoiceId = invoiceId;
 		this.customerId = customerId;
 		this.address = address;
@@ -78,6 +82,14 @@ public class Order {
 	
 	public int getId() {
 		return id;
+	}
+
+	public void setOrderDetailId(int orderDetailId) {
+		this.orderDetailId = orderDetailId;
+	}
+	
+	public int getOrderDetailId() {
+		return orderDetailId;
 	}
 
 	public void setInvoiceId(int invoiceId) {

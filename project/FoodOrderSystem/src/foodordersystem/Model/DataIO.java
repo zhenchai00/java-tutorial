@@ -18,11 +18,12 @@ public class DataIO {
                     Integer.parseInt(order[0]),
                     Integer.parseInt(order[1]),
                     Integer.parseInt(order[2]),
-                    order[3],
+                    Integer.parseInt(order[3]),
                     order[4],
-                    Order.Type.valueOf(order[5]),
-                    Order.Refund.valueOf(order[6]),
-                    Order.Status.valueOf(order[7])
+                    order[5],
+                    Order.Type.valueOf(order[6]),
+                    Order.Refund.valueOf(order[7]),
+                    Order.Status.valueOf(order[8])
                 ));
             }
         } catch (Exception e) {

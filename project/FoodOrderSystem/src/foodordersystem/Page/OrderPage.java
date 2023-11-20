@@ -50,6 +50,8 @@ public class OrderPage implements ActionListener{
             if (event.getSource() == newBtn) {
                 FoodOrderSystem.newOrderPage.getNewOrderPage().setVisible(true);
                 orderPage.setVisible(false);
+            } else if (event.getSource() == backBtn) {
+                System.exit(0);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(orderPage, "Error" + e);

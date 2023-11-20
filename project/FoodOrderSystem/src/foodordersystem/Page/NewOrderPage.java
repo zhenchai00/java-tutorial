@@ -3,9 +3,12 @@ package foodordersystem.Page;
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
 
+import foodordersystem.Model.TempOrder;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 public class NewOrderPage implements ActionListener{
     private JFrame newOrderPage;
@@ -13,6 +16,7 @@ public class NewOrderPage implements ActionListener{
     private JLabel itemIdLabel, quantityLabel;
     private JTextField itemIdField;
     private JFormattedTextField quantityField;
+    public ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
 
     /**
      * Constructor of NewOrderPage by creating the frame and its content
@@ -78,9 +82,18 @@ public class NewOrderPage implements ActionListener{
                     throw new Exception("Quantity must be greater than 0");
                 }
 
+                tempOrders.add(new TempOrder(Integer.parseInt(itemIdValue), quantityValue));
+                JOptionPane.showMessageDialog(addBtn, "Item added to cart" + "\n" + "Item ID: " + itemIdValue + "\n" + "Quantity: " + quantityValue);
+
+                itemIdField.setText("");
+                quantityField.setText("");
+
                 System.out.println("quantity tex field: " + quantityField.getValue());
                 System.out.println("itemid: " + itemIdValue);
                 System.out.println("quantity: " + quantityValue);
+                System.out.println("tempOrder: " + tempOrders.size());
+                
+                // DataIO.writeOrder(new Order(itemIdValue, 0, 0, "", "", Order.Type.DELIVERY, Order.Refund.NO, Order.Status.PENDING));
 
             } else if (event.getSource() == cancelBtn) {
                 newOrderPage.setVisible(false);
