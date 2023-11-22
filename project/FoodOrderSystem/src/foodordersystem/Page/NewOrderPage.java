@@ -16,7 +16,6 @@ public class NewOrderPage implements ActionListener{
     private JLabel itemIdLabel, quantityLabel;
     private JTextField itemIdField;
     private JFormattedTextField quantityField;
-    public static ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
 
     /**
      * Constructor of NewOrderPage by creating the frame and its content
@@ -82,17 +81,12 @@ public class NewOrderPage implements ActionListener{
                     throw new Exception("Quantity must be greater than 0");
                 }
 
-                tempOrders.add(new TempOrder(Integer.parseInt(itemIdValue), quantityValue));
+                OrderCartPage.addRowToTable(new TempOrder(Integer.parseInt(itemIdValue), quantityValue));
                 JOptionPane.showMessageDialog(addBtn, "Item added to cart" + "\n" + "Item ID: " + itemIdValue + "\n" + "Quantity: " + quantityValue);
 
                 itemIdField.setText("");
                 quantityField.setText("");
 
-                System.out.println("quantity tex field: " + quantityField.getValue());
-                System.out.println("itemid: " + itemIdValue);
-                System.out.println("quantity: " + quantityValue);
-                System.out.println("tempOrder: " + tempOrders.size());
-                
             } else if (event.getSource() == cancelBtn) {
                 newOrderPage.setVisible(false);
                 OrderPage.getOrderPage().setVisible(true);
@@ -107,9 +101,5 @@ public class NewOrderPage implements ActionListener{
             System.out.println("Error" + e);
             JOptionPane.showMessageDialog(newOrderPage, "Error: " + e.getMessage());
         }
-    }
-
-    public static ArrayList<TempOrder> getTempOrders() {
-        return tempOrders;
     }
 }

@@ -13,8 +13,9 @@ public class OrderCartPage implements ActionListener{
     private static JFrame orderCartPage;
     private JButton backBtn, confirmBtn;
     private JTable orderCartTable;
-    private DefaultTableModel tableModel;
-    private JPanel tablePanel, headerPanel, footerPanel;
+    private static DefaultTableModel tableModel;
+    private JPanel headerPanel, footerPanel;
+    // public static ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
 
     public OrderCartPage () {
         orderCartPage = new JFrame("Order Cart Page");
@@ -24,21 +25,6 @@ public class OrderCartPage implements ActionListener{
         tableModel = new DefaultTableModel(new Object[]{"Item ID", "Item Name", "Quantity", "Price"}, 0);
         orderCartTable = new JTable(tableModel);
         JScrollPane scrollPanel = new JScrollPane(orderCartTable);
-
-
-        ArrayList<TempOrder> tempOrders = NewOrderPage.getTempOrders();
-        System.out.println("temporders: " + tempOrders);
-
-        for (TempOrder tempOrder : tempOrders) {
-            System.out.println("Item ID: " + tempOrder.getItemId() + ", Quantity: " + tempOrder.getQuantity());
-            tableModel.addRow(new Object[]{
-                tempOrder.getItemId(),
-                "abc",
-                tempOrder.getQuantity(),
-                123
-            });
-        }
-
 
 
 
@@ -82,5 +68,13 @@ public class OrderCartPage implements ActionListener{
             System.out.println("Error" + e);
             JOptionPane.showMessageDialog(orderCartPage, "Error: " + e.getMessage());
         }
+    }
+
+    // public static ArrayList<TempOrder> getTempOrders () {
+    //     return tempOrders;
+    // }
+
+    public static void addRowToTable (TempOrder tempOrder) {
+        tableModel.addRow(new Object[]{tempOrder.getItemId(), "name1", tempOrder.getQuantity(), "price12"});
     }
 }

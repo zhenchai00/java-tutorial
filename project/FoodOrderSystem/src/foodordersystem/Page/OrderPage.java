@@ -25,21 +25,15 @@ public class OrderPage implements ActionListener{
 
         newBtn = new Button("New");
         viewBtn = new Button("View");
-        // deleteBtn = new Button("Delete");
-        // searchBtn = new Button("Search");
         backBtn = new Button("Back");
 
         newBtn.addActionListener(this);
         viewBtn.addActionListener(this);
-        // deleteBtn.addActionListener(this);
-        // searchBtn.addActionListener(this);
         backBtn.addActionListener(this);
 
         orderPage.setLayout(new GridLayout(6, 1));
         orderPage.add(newBtn);
         orderPage.add(viewBtn);
-        // orderPage.add(deleteBtn);
-        // orderPage.add(searchBtn);
         orderPage.add(backBtn);
 
         orderPage.setVisible(true);
@@ -48,7 +42,7 @@ public class OrderPage implements ActionListener{
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == newBtn) {
-                FoodOrderSystem.newOrderPage.getNewOrderPage().setVisible(true);
+                NewOrderPage.getNewOrderPage().setVisible(true);
                 orderPage.setVisible(false);
             } else if (event.getSource() == backBtn) {
                 System.exit(0);
