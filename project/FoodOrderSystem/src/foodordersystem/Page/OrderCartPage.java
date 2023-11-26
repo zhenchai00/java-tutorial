@@ -1,13 +1,16 @@
 package foodordersystem.Page;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import foodordersystem.Model.TempOrder;
+import foodordersystem.Model.DataIO;
+import foodordersystem.Model.Order;
+import foodordersystem.Model.OrderItem;
+import javafx.scene.chart.PieChart.Data;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class OrderCartPage implements ActionListener{
     private static JFrame orderCartPage;
@@ -15,17 +18,31 @@ public class OrderCartPage implements ActionListener{
     private JTable orderCartTable;
     private static DefaultTableModel tableModel;
     private JPanel headerPanel, footerPanel;
-    // public static ArrayList<TempOrder> tempOrders = new ArrayList<TempOrder>();
+    private JRadioButton dineInRadio, takeAwayRadio, deliveryRadio;
+    private ButtonGroup orderTypeGroup;
 
     public OrderCartPage () {
         orderCartPage = new JFrame("Order Cart Page");
         orderCartPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         orderCartPage.setLayout(new BoxLayout(orderCartPage.getContentPane(), BoxLayout.Y_AXIS));
 
-        tableModel = new DefaultTableModel(new Object[]{"Item ID", "Item Name", "Quantity", "Price"}, 0);
-        orderCartTable = new JTable(tableModel);
-        JScrollPane scrollPanel = new JScrollPane(orderCartTable);
 
+        //// Need to redo the order page 
+
+
+
+
+        dineInRadio = new JRadioButton("Dine In");
+        takeAwayRadio = new JRadioButton("Take Away");
+        deliveryRadio = new JRadioButton("Delivery");
+        dineInRadio.addActionListener(this);
+        takeAwayRadio.addActionListener(this);
+        deliveryRadio.addActionListener(this);
+
+        orderTypeGroup = new ButtonGroup();
+        orderTypeGroup.add(dineInRadio);
+        orderTypeGroup.add(takeAwayRadio);
+        orderTypeGroup.add(deliveryRadio);
 
 
         backBtn = new JButton("Back");
@@ -37,7 +54,12 @@ public class OrderCartPage implements ActionListener{
         headerPanel = new JPanel();
         footerPanel = new JPanel();
 
-        headerPanel.add(scrollPanel);
+        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
+        headerPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+        headerPanel.add(dineInRadio);
+        headerPanel.add(takeAwayRadio);
+        headerPanel.add(deliveryRadio);
 
         // add relevant components to panel
         footerPanel.add(backBtn);
@@ -62,19 +84,42 @@ public class OrderCartPage implements ActionListener{
                 NewOrderPage.getNewOrderPage().setVisible(true);
 
             } else if (event.getSource() == confirmBtn) {
+                Order.Type selectedOrderType = getOrderType();
+                DataIO.allOrders.add(new Order(
+                    1,
+                    1,
+                    1,
+                    "address",
+                    "date",
+                    selectedOrderType,
+                    Order.Refund.NO,
+                    Order.Status.PENDING
+                ));
+                DataIO.writeOrder();
+                
+                System.out.println("selected group: " + orderTypeGroup.getSelection());
 
             }
+            // System.out.println("Clicked: " + event.getSource());
         } catch (Exception e) {
             System.out.println("Error" + e);
             JOptionPane.showMessageDialog(orderCartPage, "Error: " + e.getMessage());
         }
     }
 
-    // public static ArrayList<TempOrder> getTempOrders () {
-    //     return tempOrders;
-    // }
+    public static void addRowToTable (OrderItem orderItem) {
+        tableModel.addRow(new Object[]{orderItem.getItemName(), orderItem.getQuantity(), orderItem.getPrice()});
+    }
 
-    public static void addRowToTable (TempOrder tempOrder) {
-        tableModel.addRow(new Object[]{tempOrder.getItemId(), "name1", tempOrder.getQuantity(), "price12"});
+    private Order.Type getOrderType () {
+        if (dineInRadio.isSelected()) {
+            return Order.Type.DINEIN;
+        } else if (takeAwayRadio.isSelected()) {
+            return Order.Type.TAKEAWAY;
+        } else if (deliveryRadio.isSelected()) {
+            return Order.Type.DELIVERY;
+        } else {
+            return null;
+        }
     }
 }

@@ -56,7 +56,7 @@ public class Order {
 	 * @param status 
 	 */
 	public Order(
-		int id,
+		// int id,
 		int orderDetailId,
 		int invoiceId,
 		int customerId,
@@ -74,6 +74,10 @@ public class Order {
 		this.type = type;
 		this.refund = refund;
 		this.status = status;
+	}
+
+	public Order () {
+
 	}
 
 	public void setId(int id) {
