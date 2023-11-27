@@ -15,9 +15,9 @@ public class OrderPage implements ActionListener{
         return orderPage;
     }
 
-    private Button newBtn, viewBtn, deleteBtn, searchBtn, backBtn;
+    private Button newBtn, viewBtn, backBtn;
 
-    public OrderPage () {
+    public void display () {
         orderPage = new JFrame("Order Page");
         orderPage.setSize(500, 500);
         orderPage.setLocation(700, 300);

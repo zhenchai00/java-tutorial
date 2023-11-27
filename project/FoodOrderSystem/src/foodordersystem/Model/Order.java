@@ -3,45 +3,15 @@ package foodordersystem.Model;
 import java.io.*;
 
 public class Order {
-
-	/**
-	 * Type of order option
-	 */
-	public enum Type {
-		DINEIN,
-		TAKEAWAY,
-		DELIVERY
-	};
-
-	/**
-	 * Refund status
-	 */
-	public enum Refund {
-		YES,
-		NO
-	}
-
-	/**
-	 * Order status
-	 */
-	public enum Status {
-		PENDING,
-		ACCEPT,
-		REJECT,
-		PROCESSING,
-		HANDOVER,
-		COMPLETED
-	}
-
 	private int id;
 	private int orderDetailId;
 	private int invoiceId;
 	private int customerId;
 	private String address;
 	private String date;
-	private Type type;
-	private Refund refund;
-	private Status status;
+	private OrderType type;
+	private RefundStatus refund;
+	private OrderStatus status;
 
 	/**
 	 * Constructor
@@ -62,9 +32,9 @@ public class Order {
 		int customerId,
 		String address,
 		String date,
-		Type type,
-		Refund refund,
-		Status status
+		OrderType type,
+		RefundStatus refund,
+		OrderStatus status
 	) {
 		this.orderDetailId = orderDetailId;
 		this.invoiceId = invoiceId;
@@ -127,27 +97,27 @@ public class Order {
 	public String getDate() {
 		return date;
 	}
-	public void setType(Type type) {
+	public void setOrderType(OrderType type) {
 		this.type = type;
 	}
 
-	public Type getType() {
+	public OrderType getOrderType() {
 		return type;
 	}
 
-	public void setRefund(Refund refund) {
+	public void setRefundStatus(RefundStatus refund) {
 		this.refund = refund;
 	}
 
-	public Refund getRefund() {
+	public RefundStatus getRefundStatus() {
 		return refund;
 	}
 
-	public void setStatus(Status status) {
+	public void setOrderStatus(OrderStatus status) {
 		this.status = status;
 	}
 
-	public Status getStatus() {
+	public OrderStatus getOrderStatus() {
 		return status;
 	}
 }

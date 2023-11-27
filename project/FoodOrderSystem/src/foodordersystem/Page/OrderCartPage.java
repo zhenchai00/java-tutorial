@@ -84,17 +84,17 @@ public class OrderCartPage implements ActionListener{
                 NewOrderPage.getNewOrderPage().setVisible(true);
 
             } else if (event.getSource() == confirmBtn) {
-                Order.Type selectedOrderType = getOrderType();
-                DataIO.allOrders.add(new Order(
-                    1,
-                    1,
-                    1,
-                    "address",
-                    "date",
-                    selectedOrderType,
-                    Order.Refund.NO,
-                    Order.Status.PENDING
-                ));
+                // OrderType selectedOrderType = getOrderType();
+                // DataIO.allOrders.add(new Order(
+                //     1,
+                //     1,
+                //     1,
+                //     "address",
+                //     "date",
+                //     selectedOrderType,
+                //     Order.Refund.NO,
+                //     Order.Status.PENDING
+                // ));
                 DataIO.writeOrder();
                 
                 System.out.println("selected group: " + orderTypeGroup.getSelection());
@@ -111,15 +111,15 @@ public class OrderCartPage implements ActionListener{
         tableModel.addRow(new Object[]{orderItem.getItemName(), orderItem.getQuantity(), orderItem.getPrice()});
     }
 
-    private Order.Type getOrderType () {
-        if (dineInRadio.isSelected()) {
-            return Order.Type.DINEIN;
-        } else if (takeAwayRadio.isSelected()) {
-            return Order.Type.TAKEAWAY;
-        } else if (deliveryRadio.isSelected()) {
-            return Order.Type.DELIVERY;
-        } else {
-            return null;
-        }
-    }
+    // private Order.Type getOrderType () {
+    //     if (dineInRadio.isSelected()) {
+    //         return Order.Type.DINEIN;
+    //     } else if (takeAwayRadio.isSelected()) {
+    //         return Order.Type.TAKEAWAY;
+    //     } else if (deliveryRadio.isSelected()) {
+    //         return Order.Type.DELIVERY;
+    //     } else {
+    //         return null;
+    //     }
+    // }
 }

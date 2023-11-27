@@ -19,9 +19,9 @@ public class DataIO {
 		        int customerId  = Integer.parseInt(sc.nextLine());
 		        String address  = sc.nextLine();
 		        String date  = sc.nextLine();
-		        Order.Type type  = Order.Type.valueOf(sc.nextLine());
-		        Order.Refund refund  = Order.Refund.valueOf(sc.nextLine());
-		        Order.Status status  = Order.Status.valueOf(sc.nextLine());
+		        OrderType type  = OrderType.valueOf(sc.nextLine());
+		        RefundStatus refund  = RefundStatus.valueOf(sc.nextLine());
+		        OrderStatus status  = OrderStatus.valueOf(sc.nextLine());
                 allOrders.add(new Order(
                     // id,
                     orderDetailId,
@@ -48,9 +48,9 @@ public class DataIO {
                 pw.println(order.getCustomerId());
                 pw.println(order.getAddress());
                 pw.println(order.getDate());
-                pw.println(order.getType());
-                pw.println(order.getRefund());
-                pw.println(order.getStatus());
+                pw.println(order.getOrderType());
+                pw.println(order.getRefundStatus());
+                pw.println(order.getOrderStatus());
                 pw.println();
             }
             pw.close();

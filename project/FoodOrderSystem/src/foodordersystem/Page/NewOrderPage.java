@@ -6,6 +6,7 @@ import javax.swing.text.NumberFormatter;
 
 import foodordersystem.Model.Order;
 import foodordersystem.Model.OrderItem;
+import foodordersystem.Model.OrderType;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -151,13 +152,13 @@ public class NewOrderPage implements ActionListener{
         tableModel.addRow(new Object[]{orderItem.getItemName(), orderItem.getQuantity(), orderItem.getPrice()});
     }
 
-    private Order.Type getOrderType () {
+    private OrderType getOrderType () {
         if (dineInRadio.isSelected()) {
-            return Order.Type.DINEIN;
+            return OrderType.DINE_IN;
         } else if (takeAwayRadio.isSelected()) {
-            return Order.Type.TAKEAWAY;
+            return OrderType.TAKE_AWAY;
         } else if (deliveryRadio.isSelected()) {
-            return Order.Type.DELIVERY;
+            return OrderType.DELIVERY;
         } else {
             return null;
         }
