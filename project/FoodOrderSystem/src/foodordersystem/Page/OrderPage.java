@@ -36,7 +36,7 @@ public class OrderPage implements ActionListener{
         orderPage.add(viewBtn);
         orderPage.add(backBtn);
 
-        orderPage.setVisible(true);
+        orderPage.setVisible(false);
     }
 
     public void actionPerformed (ActionEvent event) {
