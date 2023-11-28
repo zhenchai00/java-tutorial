@@ -2,7 +2,6 @@ package foodordersystem.Page;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -57,9 +56,10 @@ public class LoginPage implements ActionListener {
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == loginBtn) {
-                System.out.println("Login ");
-                ArrayList<Object> credentials = UserManager.getUserCredentials();
-                UserManager.loginUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()));
+                String username = usernameField.getText();
+                int password = Integer.parseInt(String.valueOf(passwordField.getPassword()));
+                System.out.println("Login " + username + " " + password);
+                UserManager.loginUser(username, password);
             } else if (event.getSource() == newUserBtn) {
                 System.out.println("New");
                 int inputAdminPass = Integer.parseInt(JOptionPane.showInputDialog(loginPage, "Enter admin pass code: "));
@@ -69,13 +69,6 @@ public class LoginPage implements ActionListener {
 
                 RegisterUserPage.getRegisterUserPage().setVisible(true);
                 loginPage.setVisible(false);
-
-                // String inputUsername = JOptionPane.showInputDialog(loginPage, "Enter username: ");
-                // if (DataIO.checkUsername(inputUsername) != null) {
-                //     throw new Exception("Username already exists");
-                // }
-                // int inputPassword = JOptionPane.showConfirmDialog(loginPage, "Enter password: ");
-                // DataIO.allUsers.add(new User(inputUsername, inputPassword, "admin"));
             }
         } catch (Exception e) {
             System.out.println("Error" + e);
