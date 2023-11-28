@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 
-import foodordersystem.Model.Order;
 import foodordersystem.Model.OrderItem;
 import foodordersystem.Model.OrderType;
 
