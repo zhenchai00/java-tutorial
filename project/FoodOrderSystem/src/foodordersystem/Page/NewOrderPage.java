@@ -126,7 +126,7 @@ public class NewOrderPage implements ActionListener{
 
                 // TODO: get item price from list of menu item
                 addRowToTable(new OrderItem(Integer.parseInt(itemNameValue), quantityValue, 1.00));
-                JOptionPane.showMessageDialog(addBtn, "Item added to cart" + "\n" + "Item ID: " + itemNameValue + "\n" + "Quantity: " + quantityValue);
+                JOptionPane.showMessageDialog(addBtn, "Item added to cart" + "\n" + "Item ID: " + itemNameValue + "\n" + "Quantity: " + quantityValue, "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 itemNameField.setText("");
                 quantityField.setText("");

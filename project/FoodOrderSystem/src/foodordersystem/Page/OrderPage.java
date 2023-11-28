@@ -17,7 +17,7 @@ public class OrderPage implements ActionListener{
 
     private Button newBtn, viewBtn, backBtn;
 
-    public void display () {
+    public OrderPage () {
         orderPage = new JFrame("Order Page");
         orderPage.setSize(500, 500);
         orderPage.setLocation(700, 300);
@@ -48,7 +48,7 @@ public class OrderPage implements ActionListener{
                 System.exit(0);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(orderPage, "Error" + e);
+            JOptionPane.showMessageDialog(orderPage, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
