@@ -2,10 +2,11 @@ package foodordersystem.Page;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
-import foodordersystem.Model.DataIO;
+import foodordersystem.Manager.UserManager;
 
 public class LoginPage implements ActionListener {
     public static JFrame loginPage;
@@ -57,9 +58,8 @@ public class LoginPage implements ActionListener {
         try {
             if (event.getSource() == loginBtn) {
                 System.out.println("Login ");
-                if (DataIO.checkUsername(null) == null) {
-                    throw new Exception("Username not found");
-                }
+                ArrayList<Object> credentials = UserManager.getUserCredentials();
+                UserManager.loginUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()));
             } else if (event.getSource() == newUserBtn) {
                 System.out.println("New");
                 int inputAdminPass = Integer.parseInt(JOptionPane.showInputDialog(loginPage, "Enter admin pass code: "));
@@ -79,7 +79,7 @@ public class LoginPage implements ActionListener {
             }
         } catch (Exception e) {
             System.out.println("Error" + e);
-            JOptionPane.showMessageDialog(loginPage, "Error: " + e.getMessage());
+            UserManager.showErrorMessage(e.getMessage());
         }
     }
 }

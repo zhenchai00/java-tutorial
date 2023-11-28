@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DataIO {
+    private static final String USER_FILE_PATH = "user.txt";
+    private static final String ORDER_FILE_PATH = "order.txt";
+
     public static ArrayList<Order> allOrders = new ArrayList<Order>();
     public static ArrayList<User> allUsers = new ArrayList<User>();
 
@@ -16,11 +19,11 @@ public class DataIO {
 
     public static void readUser () {
         try {
-            Scanner sc = new Scanner(new File("user.txt"));
+            Scanner sc = new Scanner(new File(USER_FILE_PATH));
             while (sc.hasNext()) {
                 String username  = sc.nextLine();
                 int password  = Integer.parseInt(sc.nextLine());
-                String role  = sc.nextLine();
+                UserRole role  = UserRole.valueOf(sc.nextLine().toUpperCase());
                 allUsers.add(new User(
                     username,
                     password,
@@ -29,13 +32,13 @@ public class DataIO {
                 sc.nextLine();
             }
         } catch (Exception e) {
-            System.out.println("Error reading user.txt ... " + e);
+            System.out.println("Error reading " + USER_FILE_PATH + ": " + e);
         }
     }
 
     public static void writeUser () {
         try {
-            PrintWriter pw = new PrintWriter("user.txt");
+            PrintWriter pw = new PrintWriter(USER_FILE_PATH);
             for (User user : allUsers) {
                 pw.println(user.getUsername());
                 pw.println(user.getPassword());
@@ -44,7 +47,7 @@ public class DataIO {
             }
             pw.close();
         } catch (Exception e) {
-            System.out.println("Error writing user.txt ... " + e);
+            System.out.println("Error writing " + USER_FILE_PATH + ": " + e);
         }
     }
 
@@ -60,7 +63,7 @@ public class DataIO {
     public static void readOrder () {
         try {
             // allOrders = (ArrayList<Order>) FileIO.readObject("order.dat");
-            Scanner sc = new Scanner(new File("order.txt"));
+            Scanner sc = new Scanner(new File(ORDER_FILE_PATH));
             while (sc.hasNext()) {
 		        // int id = sc.nextLine();
 		        int orderDetailId  = Integer.parseInt(sc.nextLine());
@@ -85,13 +88,13 @@ public class DataIO {
                 ));
             }
         } catch (Exception e) {
-            System.out.println("Error reading order.txt ... " + e);
+            System.out.println("Error reading " + ORDER_FILE_PATH + ": " + e);
         }
     }
 
     public static void writeOrder () {
         try {
-            PrintWriter pw = new PrintWriter("order.txt");
+            PrintWriter pw = new PrintWriter(ORDER_FILE_PATH);
             for (Order order : allOrders) {
                 pw.println(order.getOrderDetailId());
                 pw.println(order.getInvoiceId());
@@ -105,7 +108,7 @@ public class DataIO {
             }
             pw.close();
         } catch (Exception e) {
-            System.out.println("Error writing order.txt ... " + e);
+            System.out.println("Error writing " + ORDER_FILE_PATH + ": " + e);
         }
     }
 }

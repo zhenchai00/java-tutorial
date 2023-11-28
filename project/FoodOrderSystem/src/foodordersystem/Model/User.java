@@ -3,9 +3,9 @@ package foodordersystem.Model;
 public class User {
     private String username;
     private int password;
-    private String role = "user";
+    private UserRole role = UserRole.USER;
 
-    public User (String username, int password, String role) {
+    public User (String username, int password, UserRole role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -27,7 +27,7 @@ public class User {
         this.password = password;
     }
 
-    public String getRole () {
+    public UserRole getRole () {
         return role;
     }
 }

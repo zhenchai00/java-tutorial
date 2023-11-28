@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import foodordersystem.Manager.UserManager;
+import foodordersystem.Model.UserRole;
 
 public class RegisterUserPage implements ActionListener {
     private static JFrame registerUserPage;
@@ -45,33 +47,28 @@ public class RegisterUserPage implements ActionListener {
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == newCustBtn) {
-                getUserCredentials();
+                ArrayList<Object> credentials = UserManager.getUserCredentials();
+                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.CUSTOMER);
             } else if (event.getSource() == newVendBtn) {
-                getUserCredentials();
+                ArrayList<Object> credentials = UserManager.getUserCredentials();
+                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.VENDOR);
             } else if (event.getSource() == newAdminBtn) {
-                getUserCredentials();
+                ArrayList<Object> credentials = UserManager.getUserCredentials();
+                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.ADMIN);
             } else if (event.getSource() == newRunnerBtn) {
-                getUserCredentials();
+                ArrayList<Object> credentials = UserManager.getUserCredentials();
+                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.RUNNER);
             } else if (event.getSource() == backBtn) {
                 LoginPage.getLoginPage().setVisible(true);
                 registerUserPage.setVisible(false);
             }
         } catch (Exception e) {
             System.out.println("Error" + e);
-            JOptionPane.showMessageDialog(registerUserPage, "Error" + e);
+            UserManager.showErrorMessage(e.getMessage());
         }
     }
 
     public static JFrame getRegisterUserPage () {
         return registerUserPage;
-    }
-
-    public ArrayList<Object> getUserCredentials () {
-        ArrayList<Object> userCredentials = new ArrayList<Object>();
-        String inputUsername = JOptionPane.showInputDialog(registerUserPage, "Enter user's username: ");
-        int inputUserPass = Integer.parseInt(JOptionPane.showInputDialog(registerUserPage, "Enter user's password: "));
-        userCredentials.add(inputUsername);
-        userCredentials.add(inputUserPass);
-        return userCredentials;
     }
 }
