@@ -14,31 +14,60 @@ import javax.swing.JPanel;
 import foodordersystem.Interface.DashboardPage;
 
 public class AdminDashboardPage implements DashboardPage, ActionListener {
-    private JFrame customerDashboardPage;
-    private JButton orderBtn, menuBtn, logoutBtn;
+    private JFrame adminDashboardPage;
+    private JButton registerUserBtn, topUpBtn, logoutBtn;
     private JLabel welcomeLabel;
+
+    public AdminDashboardPage () {
+        adminDashboardPage = new JFrame("Admin Dashboard");
+        adminDashboardPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        adminDashboardPage.setLayout(new BoxLayout(adminDashboardPage.getContentPane(), BoxLayout.Y_AXIS));
+
+        JPanel headerPanel = new JPanel();
+        welcomeLabel = new JLabel("Welcome, " + LoginPage.getUser().getUsername().toUpperCase() + "!");
+        welcomeLabel.setFont(new Font(null, Font.BOLD, 20));
+        headerPanel.add(welcomeLabel);
+
+        JPanel buttonPanel = new JPanel();
+        registerUserBtn = new JButton("Register User");
+        topUpBtn = new JButton("Top Up");
+        logoutBtn = new JButton("Logout");
+        registerUserBtn.addActionListener(this);
+        topUpBtn.addActionListener(this);
+        logoutBtn.addActionListener(this);
+        buttonPanel.add(registerUserBtn);
+        buttonPanel.add(topUpBtn);
+        buttonPanel.add(logoutBtn);
+
+        adminDashboardPage.add(headerPanel);
+        adminDashboardPage.add(buttonPanel);
+
+        adminDashboardPage.pack();
+        adminDashboardPage.setLocationRelativeTo(null);
+        adminDashboardPage.setVisible(false);
+    }
 
     public void actionPerformed (ActionEvent event) {
         try {
-            if (event.getSource() == orderBtn) {
+            if (event.getSource() == registerUserBtn) {
 
-            } else if (event.getSource() == menuBtn) {
+            } else if (event.getSource() == topUpBtn) {
 
             } else if (event.getSource() == logoutBtn) {
                 logout();
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
-            JOptionPane.showMessageDialog(customerDashboardPage, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(adminDashboardPage, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public JFrame getCustomerDashboardPage() {
-        return customerDashboardPage;
+    public JFrame getAdminDashboardPage() {
+        return adminDashboardPage;
     }
 
     public void logout() {
         LoginPage.getLoginPage().setVisible(true);
-        customerDashboardPage.setVisible(false);
+        adminDashboardPage.setVisible(false);
     }
 }

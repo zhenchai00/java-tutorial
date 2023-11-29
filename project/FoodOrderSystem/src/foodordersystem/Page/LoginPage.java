@@ -72,14 +72,23 @@ public class LoginPage implements ActionListener {
 
                     case VENDOR:
                         System.out.println("Vendor");
+                        VendorDashboardPage vendorDashboardPage = new VendorDashboardPage();
+                        vendorDashboardPage.getVendorDashboardPage().setVisible(true);
+                        loginPage.setVisible(false);
                         break;
                 
                     case ADMIN:
                         System.out.println("Admin");
+                        AdminDashboardPage adminDashboardPage = new AdminDashboardPage();
+                        adminDashboardPage.getAdminDashboardPage().setVisible(true);
+                        loginPage.setVisible(false);
                         break;
                 
                     case RUNNER:
                         System.out.println("Runner");
+                        RunnerDashboardPage runnerDashboardPage = new RunnerDashboardPage();
+                        runnerDashboardPage.getRunnerDashboardPage().setVisible(true);
+                        loginPage.setVisible(false);
                         break;
                 
                     default:
