@@ -60,35 +60,32 @@ public class LoginPage implements ActionListener {
             if (event.getSource() == loginBtn) {
                 String username = usernameField.getText();
                 int password = Integer.parseInt(String.valueOf(passwordField.getPassword()));
-                if (Integer.valueOf(password) == null || username.equals("")) {
-                    return ;
-                }
+
                 System.out.println("Login " + username + " " + password);
                 user = UserManager.loginUser(username, password);
-                System.out.println("User: " + user);
 
                 switch (user.getRole()) {
                     case CUSTOMER:
                         System.out.println("Customer");
-                        FoodOrderSystem.customerDashboardPage.getCustomerDashboardPage().setVisible(true);
+                        CustomerDashboardPage.getCustomerDashboardPageObj().getCustomerDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
 
                     case VENDOR:
                         System.out.println("Vendor");
-                        FoodOrderSystem.vendorDashboardPage.getVendorDashboardPage().setVisible(true);
+                        VendorDashboardPage.getVendorDashboardPageObj().getVendorDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
                     case ADMIN:
                         System.out.println("Admin");
-                        FoodOrderSystem.adminDashboardPage.getAdminDashboardPage().setVisible(true);
+                        AdminDashboardPage.getAdminDashboardPageObj().getAdminDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
                     case RUNNER:
                         System.out.println("Runner");
-                        FoodOrderSystem.runnerDashboardPage.getRunnerDashboardPage().setVisible(true);
+                        RunnerDashboardPage.getRunnerDashboardPageObj().getRunnerDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
@@ -104,7 +101,7 @@ public class LoginPage implements ActionListener {
                     throw new Exception("Wrong admin pass code");
                 }
 
-                RegisterUserPage.getRegisterUserPage().setVisible(true);
+                // RegisterUserPage.getRegisterUserPage().setVisible(true);
                 loginPage.setVisible(false);
             } else if (event.getSource() == quitBtn) {
                 System.out.println("Quit");
@@ -112,7 +109,7 @@ public class LoginPage implements ActionListener {
             }
 
         } catch (Exception e) {
-            System.out.println("Error" + e);
+            System.out.println("Error1 " + e);
             JOptionPane.showMessageDialog(loginPage, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

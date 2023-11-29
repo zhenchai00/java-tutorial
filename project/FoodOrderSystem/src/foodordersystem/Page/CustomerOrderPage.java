@@ -18,7 +18,7 @@ public class CustomerOrderPage extends OrderPage {
         super.actionPerformed(event);
         try {
             if (event.getSource() == backBtn) {
-                FoodOrderSystem.customerDashboardPage.getCustomerDashboardPage().setVisible(true);
+                CustomerDashboardPage.getCustomerDashboardPageObj().getCustomerDashboardPage().setVisible(true);
                 orderPage.setVisible(false);
             }
         } catch (Exception e) {

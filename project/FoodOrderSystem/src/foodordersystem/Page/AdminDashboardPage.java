@@ -19,6 +19,8 @@ public class AdminDashboardPage implements DashboardPage, ActionListener {
     private JButton registerUserBtn, topUpBtn, logoutBtn;
     private JLabel welcomeLabel;
 
+    private static AdminDashboardPage instance;
+
     public AdminDashboardPage () {
         adminDashboardPage = new JFrame("Admin Dashboard");
         adminDashboardPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,6 +48,13 @@ public class AdminDashboardPage implements DashboardPage, ActionListener {
         adminDashboardPage.pack();
         adminDashboardPage.setLocationRelativeTo(null);
         adminDashboardPage.setVisible(false);
+    }
+
+    public static AdminDashboardPage getAdminDashboardPageObj() {
+        if (instance == null) {
+            instance = new AdminDashboardPage();
+        }
+        return instance;
     }
 
     public void actionPerformed (ActionEvent event) {

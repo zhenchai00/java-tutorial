@@ -16,14 +16,20 @@ import foodordersystem.Interface.DashboardPage;
 
 public class CustomerDashboardPage implements DashboardPage, ActionListener {
     public CustomerOrderPage customerOrderPage;
-    public JFrame customerDashboardPage;
+    public static JFrame customerDashboardPage;
     private JButton orderBtn, menuBtn, logoutBtn;
     private JLabel welcomeLabel;
 
-    public CustomerDashboardPage() {
+    private static CustomerDashboardPage instance;
+
+    private CustomerDashboardPage() {
+        if (LoginPage.getUser() == null) {
+            throw new NullPointerException("User is null at CustomerDashboardPage");
+        }
         customerDashboardPage = new JFrame("Customer Dashboard");
         customerDashboardPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         customerDashboardPage.setLayout(new BoxLayout(customerDashboardPage.getContentPane(), BoxLayout.Y_AXIS));
+        System.out.println("cusomter dashboard page: " + LoginPage.getUser().getUsername());
 
         JPanel headerPanel = new JPanel();
         welcomeLabel = new JLabel("Welcome, " + LoginPage.getUser().getUsername().toUpperCase() + "!");
@@ -52,11 +58,18 @@ public class CustomerDashboardPage implements DashboardPage, ActionListener {
         customerDashboardPage.setVisible(false);
     }
 
+    public static CustomerDashboardPage getCustomerDashboardPageObj() {
+        if (instance == null) {
+            instance = new CustomerDashboardPage();
+        }
+        return instance;
+    }
+
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == orderBtn) {
-                CustomerOrderPage orderPage = new CustomerOrderPage();
-                orderPage.getOrderPage().setVisible(true);
+                // CustomerOrderPage orderPage = new CustomerOrderPage();
+                // orderPage.getOrderPage().setVisible(true);
                 customerDashboardPage.setVisible(false);
             } else if (event.getSource() == menuBtn) {
 

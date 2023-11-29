@@ -19,7 +19,9 @@ public class RunnerDashboardPage implements DashboardPage, ActionListener {
     private JButton taskBtn, revenueBtn, reviewBtn, logoutBtn;
     private JLabel welcomeLabel;
 
-    public RunnerDashboardPage () {
+    private static RunnerDashboardPage instance;
+
+    private RunnerDashboardPage () {
         runnerDashboardPage = new JFrame("Runner Dashboard");
         runnerDashboardPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         runnerDashboardPage.setLayout(new BoxLayout(runnerDashboardPage.getContentPane(), BoxLayout.Y_AXIS));
@@ -52,6 +54,13 @@ public class RunnerDashboardPage implements DashboardPage, ActionListener {
         runnerDashboardPage.pack();
         runnerDashboardPage.setLocationRelativeTo(null);
         runnerDashboardPage.setVisible(false);
+    }
+
+    public static RunnerDashboardPage getRunnerDashboardPageObj() {
+        if (instance == null) {
+            instance = new RunnerDashboardPage();
+        }
+        return instance;
     }
 
     public void actionPerformed (ActionEvent event) {

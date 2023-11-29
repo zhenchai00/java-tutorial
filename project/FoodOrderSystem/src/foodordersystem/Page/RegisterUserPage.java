@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import foodordersystem.FoodOrderSystem;
@@ -68,13 +69,13 @@ public class RegisterUserPage implements ActionListener {
                     UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.RUNNER);
                 }
             } else if (event.getSource() == backBtn) {
-                FoodOrderSystem.adminDashboardPage.getAdminDashboardPage().setVisible(true);
+                AdminDashboardPage.getAdminDashboardPageObj().getAdminDashboardPage().setVisible(true);
                 // FoodOrderSystem.loginPage.getLoginPage().setVisible(true);
                 registerUserPage.setVisible(false);
             }
         } catch (Exception e) {
             System.out.println("Error" + e);
-            UserManager.showErrorMessage(e.getMessage());
+            JOptionPane.showMessageDialog(registerUserPage, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

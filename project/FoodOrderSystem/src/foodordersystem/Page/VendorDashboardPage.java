@@ -19,7 +19,9 @@ public class VendorDashboardPage implements DashboardPage, ActionListener {
     private JButton menuBtn, orderBtn, revenueBtn, reviewBtn, logoutBtn;
     private JLabel welcomeLabel;
 
-    public VendorDashboardPage () {
+    private static VendorDashboardPage instance;
+
+    private VendorDashboardPage () {
         vendorDashboardPage = new JFrame("Vendor Dashboard");
         vendorDashboardPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vendorDashboardPage.setLayout(new BoxLayout(vendorDashboardPage.getContentPane(), BoxLayout.Y_AXIS));
@@ -52,6 +54,13 @@ public class VendorDashboardPage implements DashboardPage, ActionListener {
         vendorDashboardPage.pack();
         vendorDashboardPage.setLocationRelativeTo(null);
         vendorDashboardPage.setVisible(false);
+    }
+
+    public static VendorDashboardPage getVendorDashboardPageObj() {
+        if (instance == null) {
+            instance = new VendorDashboardPage();
+        }
+        return instance;
     }
 
     public void actionPerformed (ActionEvent event) {
