@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import foodordersystem.FoodOrderSystem;
 import foodordersystem.Manager.UserManager;
 import foodordersystem.Model.UserRole;
 

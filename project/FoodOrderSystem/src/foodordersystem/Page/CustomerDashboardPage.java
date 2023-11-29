@@ -68,8 +68,8 @@ public class CustomerDashboardPage implements DashboardPage, ActionListener {
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == orderBtn) {
-                // CustomerOrderPage orderPage = new CustomerOrderPage();
-                // orderPage.getOrderPage().setVisible(true);
+                CustomerOrderPage customerOrderPage = new CustomerOrderPage();
+                customerOrderPage.getOrderPage().setVisible(true);
                 customerDashboardPage.setVisible(false);
             } else if (event.getSource() == menuBtn) {
 

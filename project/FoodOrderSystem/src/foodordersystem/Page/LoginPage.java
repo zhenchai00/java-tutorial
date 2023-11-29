@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import foodordersystem.FoodOrderSystem;
 import foodordersystem.Manager.UserManager;
 import foodordersystem.Model.User;
 

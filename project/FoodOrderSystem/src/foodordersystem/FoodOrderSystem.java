@@ -26,7 +26,6 @@ public class FoodOrderSystem {
 		loginPage = new LoginPage();
 		registerUserPage = new RegisterUserPage();
 
-		orderPage = new OrderPage();
 		newOrderPage = new NewOrderPage();
 		orderCartPage = new OrderCartPage();
 		
