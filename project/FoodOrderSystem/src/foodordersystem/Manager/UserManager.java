@@ -31,9 +31,18 @@ public class UserManager {
     public static ArrayList<Object> getUserCredentials() {
         ArrayList<Object> userCredentials = new ArrayList<>();
         String inputUsername = JOptionPane.showInputDialog(null, "Enter user's username: ");
-        int inputUserPass = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter user's password: "));
-        userCredentials.add(inputUsername);
-        userCredentials.add(inputUserPass);
+        String inputUserPassString = JOptionPane.showInputDialog(null, "Enter user's password: ");
+
+        if (
+            inputUsername != null
+            && !inputUsername.isEmpty()
+            && inputUserPassString != null
+            && !inputUserPassString.isEmpty()
+        ) {
+            int inputUserPass = Integer.parseInt(inputUserPassString);
+            userCredentials.add(inputUsername);
+            userCredentials.add(inputUserPass);
+        }
         return userCredentials;
     }
 

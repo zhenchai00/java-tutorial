@@ -48,16 +48,24 @@ public class RegisterUserPage implements ActionListener {
         try {
             if (event.getSource() == newCustBtn) {
                 ArrayList<Object> credentials = UserManager.getUserCredentials();
-                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.CUSTOMER);
+                if (!credentials.isEmpty()) {
+                    UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.CUSTOMER);
+                }
             } else if (event.getSource() == newVendBtn) {
                 ArrayList<Object> credentials = UserManager.getUserCredentials();
-                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.VENDOR);
+                if (!credentials.isEmpty()) {
+                    UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.VENDOR);
+                }
             } else if (event.getSource() == newAdminBtn) {
                 ArrayList<Object> credentials = UserManager.getUserCredentials();
-                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.ADMIN);
+                if (!credentials.isEmpty()) {
+                    UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.ADMIN);
+                }
             } else if (event.getSource() == newRunnerBtn) {
                 ArrayList<Object> credentials = UserManager.getUserCredentials();
-                UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.RUNNER);
+                if (!credentials.isEmpty()) {
+                    UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.RUNNER);
+                }
             } else if (event.getSource() == backBtn) {
                 LoginPage.getLoginPage().setVisible(true);
                 registerUserPage.setVisible(false);

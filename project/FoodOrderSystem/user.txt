@@ -14,3 +14,7 @@ ven
 123
 VENDOR
 
+admin1
+123
+ADMIN
+

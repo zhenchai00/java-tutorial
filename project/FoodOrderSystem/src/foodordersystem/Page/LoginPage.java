@@ -39,7 +39,7 @@ public class LoginPage implements ActionListener {
         newUserBtn = new JButton("New User");
         quitBtn = new JButton("Quit");
         buttonPanel.add(loginBtn);
-        buttonPanel.add(newUserBtn);
+        // buttonPanel.add(newUserBtn);
         buttonPanel.add(quitBtn);
         loginBtn.addActionListener(this);
         newUserBtn.addActionListener(this);

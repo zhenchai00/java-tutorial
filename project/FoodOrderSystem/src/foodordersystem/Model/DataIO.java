@@ -13,8 +13,12 @@ public class DataIO {
     public static ArrayList<User> allUsers = new ArrayList<User>();
 
     public static void readData () {
-        readUser();
-        readOrder();
+        try {
+            readUser();
+            readOrder();
+        } catch (Exception e) {
+            System.out.println("Error reading data: " + e.getMessage());
+        }
     }
 
     public static void readUser () {

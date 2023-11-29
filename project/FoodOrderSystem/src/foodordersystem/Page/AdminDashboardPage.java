@@ -50,7 +50,8 @@ public class AdminDashboardPage implements DashboardPage, ActionListener {
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == registerUserBtn) {
-
+                RegisterUserPage.getRegisterUserPage().setVisible(true);
+                adminDashboardPage.setVisible(false);
             } else if (event.getSource() == topUpBtn) {
 
             } else if (event.getSource() == logoutBtn) {
