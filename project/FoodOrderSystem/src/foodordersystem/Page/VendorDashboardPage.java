@@ -11,11 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Interface.DashboardPage;
 
 public class VendorDashboardPage implements DashboardPage, ActionListener {
     private JFrame vendorDashboardPage;
-    private JButton menuBtn, orderBtn, revenueBtn, logoutBtn;
+    private JButton menuBtn, orderBtn, revenueBtn, reviewBtn, logoutBtn;
     private JLabel welcomeLabel;
 
     public VendorDashboardPage () {
@@ -32,14 +33,17 @@ public class VendorDashboardPage implements DashboardPage, ActionListener {
         menuBtn = new JButton("Menu");
         orderBtn = new JButton("Order");
         revenueBtn = new JButton("Revenue");
+        reviewBtn = new JButton("Review");
         logoutBtn = new JButton("Logout");
         menuBtn.addActionListener(this);
         orderBtn.addActionListener(this);
+        revenueBtn.addActionListener(this);
         revenueBtn.addActionListener(this);
         logoutBtn.addActionListener(this);
         buttonPanel.add(menuBtn);
         buttonPanel.add(orderBtn);
         buttonPanel.add(revenueBtn);
+        buttonPanel.add(reviewBtn);
         buttonPanel.add(logoutBtn);
 
         vendorDashboardPage.add(headerPanel);
@@ -58,6 +62,8 @@ public class VendorDashboardPage implements DashboardPage, ActionListener {
 
             } else if (event.getSource() == revenueBtn) {
 
+            } else if (event.getSource() == reviewBtn) {
+
             } else if (event.getSource() == logoutBtn) {
                 logout();
             }
@@ -72,7 +78,7 @@ public class VendorDashboardPage implements DashboardPage, ActionListener {
     }
 
     public void logout() {
-        LoginPage.getLoginPage().setVisible(true);
+        FoodOrderSystem.loginPage.getLoginPage().setVisible(true);
         vendorDashboardPage.setVisible(false);
     }
 }

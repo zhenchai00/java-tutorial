@@ -5,11 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Manager.UserManager;
 import foodordersystem.Model.User;
 
 public class LoginPage implements ActionListener {
-    public static JFrame loginPage;
+    public JFrame loginPage;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JLabel usernameLabel, passwordLabel;
@@ -39,7 +40,7 @@ public class LoginPage implements ActionListener {
         newUserBtn = new JButton("New User");
         quitBtn = new JButton("Quit");
         buttonPanel.add(loginBtn);
-        // buttonPanel.add(newUserBtn);
+        buttonPanel.add(newUserBtn);
         buttonPanel.add(quitBtn);
         loginBtn.addActionListener(this);
         newUserBtn.addActionListener(this);
@@ -59,35 +60,35 @@ public class LoginPage implements ActionListener {
             if (event.getSource() == loginBtn) {
                 String username = usernameField.getText();
                 int password = Integer.parseInt(String.valueOf(passwordField.getPassword()));
+                if (Integer.valueOf(password) == null || username.equals("")) {
+                    return ;
+                }
                 System.out.println("Login " + username + " " + password);
                 user = UserManager.loginUser(username, password);
+                System.out.println("User: " + user);
 
                 switch (user.getRole()) {
                     case CUSTOMER:
                         System.out.println("Customer");
-                        CustomerDashboardPage customerDashboardPage = new CustomerDashboardPage();
-                        customerDashboardPage.getCustomerDashboardPage().setVisible(true);
+                        FoodOrderSystem.customerDashboardPage.getCustomerDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
 
                     case VENDOR:
                         System.out.println("Vendor");
-                        VendorDashboardPage vendorDashboardPage = new VendorDashboardPage();
-                        vendorDashboardPage.getVendorDashboardPage().setVisible(true);
+                        FoodOrderSystem.vendorDashboardPage.getVendorDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
                     case ADMIN:
                         System.out.println("Admin");
-                        AdminDashboardPage adminDashboardPage = new AdminDashboardPage();
-                        adminDashboardPage.getAdminDashboardPage().setVisible(true);
+                        FoodOrderSystem.adminDashboardPage.getAdminDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
                     case RUNNER:
                         System.out.println("Runner");
-                        RunnerDashboardPage runnerDashboardPage = new RunnerDashboardPage();
-                        runnerDashboardPage.getRunnerDashboardPage().setVisible(true);
+                        FoodOrderSystem.runnerDashboardPage.getRunnerDashboardPage().setVisible(true);
                         loginPage.setVisible(false);
                         break;
                 
@@ -116,7 +117,7 @@ public class LoginPage implements ActionListener {
         }
     }
 
-    public static JFrame getLoginPage() {
+    public JFrame getLoginPage() {
         return loginPage;
     }
 

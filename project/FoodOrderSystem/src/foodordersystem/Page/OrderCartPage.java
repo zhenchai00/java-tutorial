@@ -4,19 +4,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Model.DataIO;
-import foodordersystem.Model.Order;
 import foodordersystem.Model.OrderItem;
-import javafx.scene.chart.PieChart.Data;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class OrderCartPage implements ActionListener{
-    private static JFrame orderCartPage;
+    private JFrame orderCartPage;
     private JButton backBtn, confirmBtn;
-    private JTable orderCartTable;
-    private static DefaultTableModel tableModel;
+    // private JTable orderCartTable;
+    private DefaultTableModel tableModel;
     private JPanel headerPanel, footerPanel;
     private JRadioButton dineInRadio, takeAwayRadio, deliveryRadio;
     private ButtonGroup orderTypeGroup;
@@ -73,7 +72,7 @@ public class OrderCartPage implements ActionListener{
         orderCartPage.setVisible(false);
     }
 
-    public static JFrame getOrderCartPage () {
+    public JFrame getOrderCartPage () {
         return orderCartPage;
     }
 
@@ -81,7 +80,7 @@ public class OrderCartPage implements ActionListener{
         try {
             if (event.getSource() == backBtn) {
                 orderCartPage.setVisible(false);
-                NewOrderPage.getNewOrderPage().setVisible(true);
+                FoodOrderSystem.newOrderPage.getNewOrderPage().setVisible(true);
 
             } else if (event.getSource() == confirmBtn) {
                 // OrderType selectedOrderType = getOrderType();
@@ -107,7 +106,7 @@ public class OrderCartPage implements ActionListener{
         }
     }
 
-    public static void addRowToTable (OrderItem orderItem) {
+    public void addRowToTable (OrderItem orderItem) {
         tableModel.addRow(new Object[]{orderItem.getItemName(), orderItem.getQuantity(), orderItem.getPrice()});
     }
 

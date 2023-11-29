@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Interface.DashboardPage;
 
 public class AdminDashboardPage implements DashboardPage, ActionListener {
@@ -68,7 +69,7 @@ public class AdminDashboardPage implements DashboardPage, ActionListener {
     }
 
     public void logout() {
-        LoginPage.getLoginPage().setVisible(true);
+        FoodOrderSystem.loginPage.getLoginPage().setVisible(true);
         adminDashboardPage.setVisible(false);
     }
 }

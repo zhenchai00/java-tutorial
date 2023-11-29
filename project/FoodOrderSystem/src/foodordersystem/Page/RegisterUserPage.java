@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Manager.UserManager;
 import foodordersystem.Model.UserRole;
 
@@ -67,7 +68,8 @@ public class RegisterUserPage implements ActionListener {
                     UserManager.registerUser(credentials.get(0).toString(), Integer.parseInt(credentials.get(1).toString()), UserRole.RUNNER);
                 }
             } else if (event.getSource() == backBtn) {
-                LoginPage.getLoginPage().setVisible(true);
+                FoodOrderSystem.adminDashboardPage.getAdminDashboardPage().setVisible(true);
+                // FoodOrderSystem.loginPage.getLoginPage().setVisible(true);
                 registerUserPage.setVisible(false);
             }
         } catch (Exception e) {

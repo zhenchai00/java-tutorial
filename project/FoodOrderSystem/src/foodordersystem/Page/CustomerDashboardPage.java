@@ -11,10 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Interface.DashboardPage;
 
 public class CustomerDashboardPage implements DashboardPage, ActionListener {
-    private JFrame customerDashboardPage;
+    public CustomerOrderPage customerOrderPage;
+    public JFrame customerDashboardPage;
     private JButton orderBtn, menuBtn, logoutBtn;
     private JLabel welcomeLabel;
 
@@ -53,7 +55,9 @@ public class CustomerDashboardPage implements DashboardPage, ActionListener {
     public void actionPerformed (ActionEvent event) {
         try {
             if (event.getSource() == orderBtn) {
-
+                CustomerOrderPage orderPage = new CustomerOrderPage();
+                orderPage.getOrderPage().setVisible(true);
+                customerDashboardPage.setVisible(false);
             } else if (event.getSource() == menuBtn) {
 
             } else if (event.getSource() == logoutBtn) {
@@ -70,7 +74,7 @@ public class CustomerDashboardPage implements DashboardPage, ActionListener {
     }
 
     public void logout() {
-        LoginPage.getLoginPage().setVisible(true);
+        FoodOrderSystem.loginPage.getLoginPage().setVisible(true);
         customerDashboardPage.setVisible(false);
     }
 }

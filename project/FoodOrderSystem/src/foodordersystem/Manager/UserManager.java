@@ -15,6 +15,7 @@ public class UserManager {
         if (user == null || user.getPassword() != password) {
             throw new Exception("Invalid username or password");
         }
+        System.out.println("User: " + user.getUsername() + " " + user.getPassword() + " " + user.getRole());
         return user;
     }
 

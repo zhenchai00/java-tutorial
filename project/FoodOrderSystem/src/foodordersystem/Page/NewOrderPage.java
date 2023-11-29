@@ -4,15 +4,15 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 
+import foodordersystem.FoodOrderSystem;
 import foodordersystem.Model.OrderItem;
-import foodordersystem.Model.OrderType;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
 public class NewOrderPage implements ActionListener{
-    private static JFrame newOrderPage;
+    private JFrame newOrderPage;
 
     private JButton addBtn, editBtn, deleteBtn, cancelBtn, continueBtn;
 
@@ -24,7 +24,7 @@ public class NewOrderPage implements ActionListener{
     private JFormattedTextField quantityField;
 
     private JTable ordercontinueTable;
-    private static DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
 
     /**
      * Constructor of NewOrderPage by creating the frame and its content
@@ -110,7 +110,7 @@ public class NewOrderPage implements ActionListener{
         newOrderPage.setVisible(false);
     }
 
-    public static JFrame getNewOrderPage() {
+    public JFrame getNewOrderPage() {
         return newOrderPage;
     }
 
@@ -133,7 +133,7 @@ public class NewOrderPage implements ActionListener{
 
             } else if (event.getSource() == cancelBtn) {
                 newOrderPage.setVisible(false);
-                OrderPage.getOrderPage().setVisible(true);
+                FoodOrderSystem.orderPage.getOrderPage().setVisible(true);
 
             } else if (event.getSource() == continueBtn) {
                 // newOrderPage.setVisible(false);
@@ -147,19 +147,19 @@ public class NewOrderPage implements ActionListener{
         }
     }
 
-    public static void addRowToTable (OrderItem orderItem) {
+    public void addRowToTable (OrderItem orderItem) {
         tableModel.addRow(new Object[]{orderItem.getItemName(), orderItem.getQuantity(), orderItem.getPrice()});
     }
 
-    private OrderType getOrderType () {
-        if (dineInRadio.isSelected()) {
-            return OrderType.DINE_IN;
-        } else if (takeAwayRadio.isSelected()) {
-            return OrderType.TAKE_AWAY;
-        } else if (deliveryRadio.isSelected()) {
-            return OrderType.DELIVERY;
-        } else {
-            return null;
-        }
-    }
+    // private OrderType getOrderType () {
+    //     if (dineInRadio.isSelected()) {
+    //         return OrderType.DINE_IN;
+    //     } else if (takeAwayRadio.isSelected()) {
+    //         return OrderType.TAKE_AWAY;
+    //     } else if (deliveryRadio.isSelected()) {
+    //         return OrderType.DELIVERY;
+    //     } else {
+    //         return null;
+    //     }
+    // }
 }

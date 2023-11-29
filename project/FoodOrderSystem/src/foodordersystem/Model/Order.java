@@ -1,7 +1,5 @@
 package foodordersystem.Model;
 
-import java.io.*;
-
 public class Order {
 	private int id;
 	private int orderDetailId;
